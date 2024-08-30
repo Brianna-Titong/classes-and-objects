@@ -41,13 +41,12 @@ int main() {
     do{
     cout << "Input Add Book-1, Display Book-2, Search Book-3, Exit-4: ";
     cin >> choice;
-
-
+    cin.ignore();
 		    switch (choice) {
+		    	
 			        case 1: {
 			    	if (BookCtr<5) {
 			            Menu s1;
-			            cin.ignore();
 			
 			            cout << "Enter title: ";
 			            string title;
@@ -94,17 +93,21 @@ int main() {
 					cout<<"Book search(Enter Book Title): ";
  					getline(cin, TitleSearch);
 					
-				    bool found = false;
 				    for (int i = 0; i < 5; ++i) {
-				        if (TitleSearch==Books[i]) {
-				            found = true;
+				        if (TitleSearch==Books[i].getTitle()) {
+				        cout << "Book Found!"<<endl;
+                        cout << "Book " << i + 1 << ":" << endl;
+                        cout << "  Title: " << Books[i].getTitle() << endl;
+                        cout << "  Author: " << Books[i].getAuthor() << endl;
+                        cout << "  Year: " << Books[i].getYear() << endl;
+                        cout << endl;
 				            break;
 				        }
 				    }
 					break;
 				}
-		    }
-	    } while(choice !=4);
+		    }	
+	    }while(choice !=4);
 	
 	    return 0;
 }
